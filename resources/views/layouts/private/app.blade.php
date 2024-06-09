@@ -70,7 +70,7 @@
                 </a>
             </li>
 
-            <!-- Data Data Profile Nav -->
+            {{-- <!-- Data Data Profile Nav -->
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('profile') ? '' : 'collapsed' }}"
                     href="{{ route('profile.index') }}">
@@ -82,6 +82,12 @@
             <!-- Data Data User Nav -->
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('user') ? '' : 'collapsed' }}" href="{{ route('user.index') }}">
+                    <i class="bi bi-grid"></i>
+                    <span>Data User</span>
+                </a>
+            </li> --}}
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('home') ? '' : 'collapsed' }}" href="{{ route('home.index') }}">
                     <i class="bi bi-grid"></i>
                     <span>Data User</span>
                 </a>

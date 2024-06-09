@@ -8,7 +8,8 @@ use App\Http\Controllers\ProfileUserController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Private\HomeController as PrivateHomeController;
+use App\Http\Controllers\Public\HomeController as PublicHomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,12 +23,21 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [PublicHomeController::class, 'index'])->name('home');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/resume', [ResumeController::class, 'index'])->name('resume');
-Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
+// Home Routes
+Route::prefix('home')->group(function () {
+    Route::get('/', [PrivateHomeController::class, 'index'])->name('home.index');
+    Route::get('/create', [PrivateHomeController::class, 'create'])->name('home.create');
+    Route::post('/store', [PrivateHomeController::class, 'store'])->name('home.store');
+    Route::get('/edit/{home}', [PrivateHomeController::class, 'edit'])->name('home.edit');
+    Route::post('/update/{id}', [PrivateHomeController::class, 'update'])->name('home.update');
+    Route::delete('/destroy/{home}', [PrivateHomeController::class, 'destroy'])->name('home.destroy');
+});
 
 
 Route::get('/project', function () {
