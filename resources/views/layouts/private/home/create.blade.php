@@ -13,43 +13,50 @@
         </nav>
     </div>
 
+    
+    @if ($errors->any())
+        <div>
+            <p class="text-danger">{{$errors->first()}}</p>
+        </div>
+    @endif
+
     <div class="card">
         <div class="card-header">
             <h5 class="card-title my-auto">Create Home</h5>
             <form method="POST" action="{{ route('home.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-outline mb-4">
-                    <input type="text" name="title1" id="title1" class="form-control" />
-                    <label class="form-label" for="title1">Title 1</label>
+                    <input type="text" name="main_title" id="title1" class="form-control" />
+                    <label class="form-label" for="title1">Main Title</label>
                 </div>
                 <!-- Title2 input -->
                 <div class="form-outline mb-4">
-                    <input type="text" name="title2" id="title2" class="form-control" />
-                    <label class="form-label" for="title2">Title 2</label>
+                    <input type="text" name="subtitle1" id="title2" class="form-control" />
+                    <label class="form-label" for="title2">Subtitle 1</label>
                 </div>
                 <!-- Title3 input -->
                 <div class="form-outline mb-4">
-                    <input type="text" name="title3" id="title3" class="form-control" />
-                    <label class="form-label" for="title3">Title 3</label>
+                    <input type="text" name="subtitle2" id="title3" class="form-control" />
+                    <label class="form-label" for="title3">Subtitle 2</label>
                 </div>
                 <!-- Button Left input -->
                 <div class="form-outline mb-4">
-                    <input type="text" name="button_left" id="button_left" class="form-control" />
-                    <label class="form-label" for="button_left">Button Left</label>
+                    <input type="text" name="left_button_text" id="button_left" class="form-control" />
+                    <label class="form-label" for="button_left">Button Left Text</label>
                 </div>
                 <!-- Button Right input -->
                 <div class="form-outline mb-4">
-                    <input type="text" name="button_right" id="button_right" class="form-control" />
-                    <label class="form-label" for="button_right">Button Right</label>
+                    <input type="text" name="right_button_text" id="button_right" class="form-control" />
+                    <label class="form-label" for="button_right">Button Right Text</label>
                 </div>
                 <!-- About Me Title input -->
                 <div class="form-outline mb-4">
-                    <input type="text" name="about_me_title" id="about_me_title" class="form-control" />
+                    <input type="text" name="about_me_section_title" id="about_me_title" class="form-control" />
                     <label class="form-label" for="about_me_title">About Me Title</label>
                 </div>
                 <!-- About Me Description input -->
                 <div class="form-outline mb-4">
-                    <textarea name="about_me_description" id="about_me_description" class="form-control" rows="4"></textarea>
+                    <textarea name="about_me_section_description" id="about_me_description" class="form-control" rows="4"></textarea>
                     <label class="form-label" for="about_me_description">About Me Description</label>
                 </div>
                 <!-- Image Path input (optional) -->

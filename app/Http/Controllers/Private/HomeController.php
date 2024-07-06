@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Private;
 use App\Http\Controllers\Controller;
 use App\Models\Home;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -23,38 +24,49 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         try {
+            // Validate the incoming request data
             $request->validate([
-                'title1' => 'required|string',
-                'title2' => 'required|string',
-                'title3' => 'required|string',
-                'button_left' => 'required|string',
-                'button_right' => 'required|string',
-                'about_me_title' => 'required|string',
-                'about_me_description' => 'required|string',
+                'main_title' => 'required|string',
+                'subtitle1' => 'required|string',
+                'subtitle2' => 'required|string',
+                'left_button_text' => 'required|string',
+                'right_button_text' => 'required|string',
+                'about_me_section_title' => 'required|string',
+                'about_me_section_description' => 'required|string',
                 'image_path' => 'nullable|image', // Validate if the image is present and is an actual image
             ]);
 
-            $home = new Home; // Assuming your model is Home
-            $home->title1 = $request->title1;
-            $home->title2 = $request->title2;
-            $home->title3 = $request->title3;
-            $home->button_left = $request->button_left;
-            $home->button_right = $request->button_right;
-            $home->about_me_title = $request->about_me_title;
-            $home->about_me_description = $request->about_me_description;
+            // Prepare data for creation
+            $data = [
+                'main_title' => $request->main_title,
+                'subtitle1' => $request->subtitle1,
+                'subtitle2' => $request->subtitle2,
+                'left_button_text' => $request->left_button_text,
+                'right_button_text' => $request->right_button_text,
+                'about_me_section_title' => $request->about_me_section_title,
+                'about_me_section_description' => $request->about_me_section_description,
+            ];
 
+            // Handle the image upload if present
             if ($request->hasFile('image_path')) {
-                $imagePath = $request->file('image_path')->store('uploads', 'public');
-                $home->image_path = $imagePath;
+                $image = $request->file('image_path');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('/storage/uploads'), $imageName);
+                $data['image_path'] = '/uploads/' . $imageName;
             }
 
-            $home->save();
+            // Create a new Home instance and save it to the database
+            Home::create($data);
 
+            // Redirect with a success message
             return redirect()->route('home.index')->with('success', 'Home content created successfully.');
         } catch (\Exception $e) {
-            dd($e->getMessage());
+            // Redirect back with an error message in case of exception
+            return redirect()->back()->withErrors($e->getMessage());
         }
     }
+
+
 
     public function edit(Home $home)
     {
@@ -64,33 +76,46 @@ class HomeController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title1' => 'required|string',
-            'title2' => 'required|string',
-            'title3' => 'required|string',
-            'button_left' => 'required|string',
-            'button_right' => 'required|string',
-            'about_me_title' => 'required|string',
-            'about_me_description' => 'required|string',
+            'main_title' => 'required|string',
+            'subtitle1' => 'required|string',
+            'subtitle2' => 'required|string',
+            'left_button_text' => 'required|string',
+            'right_button_text' => 'required|string',
+            'about_me_section_title' => 'required|string',
+            'about_me_section_description' => 'required|string',
             'image_path' => 'nullable|image', // Validate if the image is present and is an actual image
         ]);
 
-        $home = Home::findOrFail($id); // Assuming your model is Home
-        $home->title1 = $request->title1;
-        $home->title2 = $request->title2;
-        $home->title3 = $request->title3;
-        $home->button_left = $request->button_left;
-        $home->button_right = $request->button_right;
-        $home->about_me_title = $request->about_me_title;
-        $home->about_me_description = $request->about_me_description;
+        try {
+            $home = Home::findOrFail($id); // Assuming your model is Home
 
-        if ($request->hasFile('image_path')) {
-            $imagePath = $request->file('image_path')->store('uploads', 'public');
-            $home->image_path = $imagePath;
+            // Update data based on the validated request
+            $home->update([
+                'main_title' => $request->main_title,
+                'subtitle1' => $request->subtitle1,
+                'subtitle2' => $request->subtitle2,
+                'left_button_text' => $request->left_button_text,
+                'right_button_text' => $request->right_button_text,
+                'about_me_section_title' => $request->about_me_section_title,
+                'about_me_section_description' => $request->about_me_section_description,
+            ]);
+
+           
+            if ($request->hasFile('image_path')) {
+                $image = $request->file('image_path');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('/storage/uploads'), $imageName);
+                $data['image_path'] = '/uploads/' . $imageName;
+                $home->update(
+                    [
+                        'image_path' => $data['image_path']
+                    ]
+                );
+            }
+            return redirect()->route('home.index')->with('success', 'Home content updated successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
         }
-
-        $home->save();
-
-        return redirect()->route('home.index')->with('success', 'Home content updated successfully.');
     }
 
     public function destroy($id)

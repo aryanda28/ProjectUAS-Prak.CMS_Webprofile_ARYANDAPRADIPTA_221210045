@@ -22,10 +22,10 @@ class ResumeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tahun' => 'required',
-            'nama_sekolah' => 'required',
-            'jenis_sekolah' => 'required',
-            'penjelasan' => 'required',
+            'year' => 'required',
+            'school_name' => 'required',
+            'school_type' => 'required',
+            'description' => 'required',
 
         ]);
         Resume::create($request->all());
@@ -42,11 +42,12 @@ class ResumeController extends Controller
     public function update(Request $request)
     {
         $resume = Resume::find($request->id);
+       
         $request->validate([
-            'tahun' => 'required',
-            'nama_sekolah' => 'required',
-            'jenis_sekolah' => 'required',
-            'penjelasan' => 'required',
+            'year' => 'required',
+            'school_name' => 'required',
+            'school_type' => 'required',
+            'description' => 'required',
 
         ]);
 

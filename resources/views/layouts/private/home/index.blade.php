@@ -37,9 +37,9 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
-                                        <th scope="col">Title1</th>
-                                        <th scope="col">Title2</th>
-                                        <th scope="col">Title3</th>
+                                        <th scope="col">Main Title</th>
+                                        <th scope="col">Subtitle 1</th>
+                                        <th scope="col">Subtitle 2</th>
                                         <th scope="col">ButtonLeft</th>
                                         <th scope="col">ButtonRight</th>
                                         <th scope="col">AboutMeTitle</th>
@@ -53,15 +53,16 @@
                                     @foreach ($homes as $home)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
-                                            <td>{{ $home->title1 }}</td>
-                                            <td>{{ $home->title2 }}</td>
-                                            <td>{{ $home->title3 }}</td>
-                                            <td>{{ $home->button_left }}</td>
-                                            <td>{{ $home->button_right }}</td>
-                                            <td>{{ $home->about_me_title }}</td>
-                                            <td>{{ $home->about_me_description }}</td>
+                                            <td>{{ $home->main_title }}</td>
+                                            <td>{{ $home->subtitle1 }}</td>
+                                            <td>{{ $home->subtitle2 }}</td>
+                                            <td>{{ $home->left_button_text }}</td>
+                                            <td>{{ $home->right_button_text }}</td>
+                                            <td>{{ $home->about_me_section_title }}</td>
+                                            <td>{{ $home->about_me_section_description }}</td>
                                             <td>
-                                                <img src="{{ asset('storage/' . $home->image_path) }}" alt="">
+                                                <img height="100px" src="{{ asset('storage/' . $home->image_path) }}"
+                                                    alt="no imate">
                                             </td>
                                             <td>
 

@@ -30,14 +30,7 @@ Route::get('/resume', [ResumeController::class, 'index'])->name('resume');
 
 
 // Home Routes
-Route::prefix('home')->group(function () {
-    Route::get('/', [PrivateHomeController::class, 'index'])->name('home.index');
-    Route::get('/create', [PrivateHomeController::class, 'create'])->name('home.create');
-    Route::post('/store', [PrivateHomeController::class, 'store'])->name('home.store');
-    Route::get('/edit/{home}', [PrivateHomeController::class, 'edit'])->name('home.edit');
-    Route::post('/update/{id}', [PrivateHomeController::class, 'update'])->name('home.update');
-    Route::delete('/destroy/{home}', [PrivateHomeController::class, 'destroy'])->name('home.destroy');
-});
+
 
 
 Route::get('/project', function () {
@@ -80,5 +73,13 @@ Route::middleware('auth')->group(function () {
         Route::put('/resume-dash/update', 'update')->name('resume.update');
         Route::get('/resume-dash/destroy/{id}', 'destroy')->name('resume.destroy');
         Route::post('/resume-dash/store', 'store')->name('resume.store');
+    });
+    Route::prefix('home')->group(function () {
+        Route::get('/', [PrivateHomeController::class, 'index'])->name('home.index');
+        Route::get('/create', [PrivateHomeController::class, 'create'])->name('home.create');
+        Route::post('/store', [PrivateHomeController::class, 'store'])->name('home.store');
+        Route::get('/edit/{home}', [PrivateHomeController::class, 'edit'])->name('home.edit');
+        Route::put('/update/{id}', [PrivateHomeController::class, 'update'])->name('home.update');
+        Route::delete('/destroy/{home}', [PrivateHomeController::class, 'destroy'])->name('home.destroy');
     });
 });

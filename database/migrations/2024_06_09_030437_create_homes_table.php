@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('homes', function (Blueprint $table) {
             $table->id();
-            $table->string('title1');
-            $table->string('title2');
-            $table->string('title3');
-            $table->string('button_left');
-            $table->string('button_right');
-            $table->string('about_me_title');
-            $table->text('about_me_description');
-            $table->string('image_path')->nullable();
+            $table->string('main_title')->comment('Main title of the homepage');
+            $table->string('subtitle1')->comment('First subtitle');
+            $table->string('subtitle2')->comment('Second subtitle');
+            $table->string('left_button_text')->comment('Text for the left button');
+            $table->string('right_button_text')->comment('Text for the right button');
+            $table->string('about_me_section_title')->comment('Title for the About Me section');
+            $table->text('about_me_section_description')->comment('Description for the About Me section');
+            $table->string('image_path')->nullable()->comment('Path to the image, if any');
             $table->timestamps();
         });
     }

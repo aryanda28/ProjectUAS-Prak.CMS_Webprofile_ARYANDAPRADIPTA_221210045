@@ -14,16 +14,18 @@ class ResumeSeeder extends Seeder
     public function run(): void
     {
         Resume::create([
-            'tahun' => '2020-2022',
-            'nama_sekolah' => 'SMK N 3 Yogyakarta',
-            'jenis_sekolah' => 'SMK',
-            'penjelasan' => 'Siswa jurusan teknik komputer dan jaringan di SMK N 3 Yogyakarta',
+            'year' => '2020-2022',
+            'school_name' => 'SMK N 3 Yogyakarta',
+            'school_type' => 'SMK',
+            'description' => 'Student majoring in computer and network engineering at SMK N 3 Yogyakarta',
         ]);
+    
+        // Creating resume entry for Universitas Mercu Buana Yogyakarta
         Resume::create([
-            'tahun' => '2022',
-            'nama_sekolah' => 'Universitas Mercu Buana Yogyakarta',
-            'jenis_sekolah' => 'Universitas',
-            'penjelasan' => 'Mahasiswa jurusan sistem informasi di Universitas Mercu Buana Yogyakarta',
+            'year' => '2022',
+            'school_name' => 'Universitas Mercu Buana Yogyakarta',
+            'school_type' => 'University',
+            'description' => 'Student majoring in information systems at Universitas Mercu Buana Yogyakarta',
         ]);
     }
 }

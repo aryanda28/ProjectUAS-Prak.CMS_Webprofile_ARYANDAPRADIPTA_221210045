@@ -17,19 +17,19 @@
                                 <div class="row align-items-center gx-5">
                                     <div class="col text-center text-lg-start mb-4 mb-lg-0">
                                         <div class="bg-light p-4 rounded-4">
-                                            <div class="text-secondary fw-bolder mb-2">{{ $resume->tahun }}</div>
+                                            <div class="text-secondary fw-bolder mb-2">{{ $resume->year }}</div>
                                             <div class="mb-2">
-                                                <div class="small fw-bolder">{{ $resume->nama_sekolah }}</div>
+                                                <div class="small fw-bolder">{{ $resume->school_name }}</div>
 
                                             </div>
                                             <div class="fst-italic">
-                                                <div class="small text-muted">{{ $resume->jenis_sekolah }}</div>
+                                                <div class="small text-muted">{{ $resume->school_type }}</div>
 
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
-                                        <div>{{ $resume->penjelasan }}</div>
+                                        <div>{{ $resume->description }}</div>
                                     </div>
                                 </div>
                             </div>

@@ -10,18 +10,19 @@ return new class extends Migration
     {
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('name');
-            $table->text('about');
-            $table->string('link_twitter')->nullable();
-            $table->string('link_linkedin')->nullable();
-            $table->string('link_github')->nullable();
-            $table->string('telepon');
-            $table->string('email')->unique();
-            $table->string('link_footer')->nullable();
+            $table->unsignedBigInteger('user_id')->comment('Reference to the user');
+            $table->string('name')->comment('Name of the profile');
+            $table->text('about')->comment('Description about the profile');
+            $table->string('phone')->comment('Phone number');
+            $table->string('email')->unique()->comment('Email address');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade')
+                ->comment('Foreign key constraint to users table');
+            
         });
     }
 

@@ -21,7 +21,7 @@ class UserProfileSeeder extends Seeder
         // 2022- skrg mahasiswa TI prodi sistem informasi universitas mercu buana yogyakarta
         User::create([
             'name' => 'Aryanda Pradipta',
-            'email' => 'aryandapradipta@gmail.com',
+            'email' => 'aryandapradipta28@gmail.com',
             'password' => Hash::make('aryandapradipta'),
         ]);
         User::create([
@@ -31,13 +31,9 @@ class UserProfileSeeder extends Seeder
         ]);
         UserProfile::create([
             'name' => 'Aryanda Pradipta',
-            'about' => 'Hi Semua, saya adalah seorang web developer yang suka menulis artikel tentang pemrograman. Saya juga suka berbagi pengetahuan dengan orang lain. Jika kamu ingin berdiskusi tentang pemrograman, jangan ragu untuk menghubungi saya.',
-            'link_twitter' => 'https://twitter.com',
-            'link_linkedin' => 'https://linkedin.com',
-            'link_github' => 'https://github.com',
-            'telepon' => '+62 857-2583-6036',
-            'email' => 'aryandapradipta@gmail.com',
-            'link_footer' => 'https://aryandapradipta.com',
+            'about' => 'Hi everyone, I am a web developer who enjoys writing articles about programming. I also love sharing knowledge with others. If you want to discuss programming, feel free to contact me.',
+            'phone' => '+62 857-2583-6036',
+            'email' => 'aryandapradipta28@gmail.com',
             'user_id' => 1
         ]);
     }

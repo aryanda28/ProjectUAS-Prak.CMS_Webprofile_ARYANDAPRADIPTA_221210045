@@ -13,14 +13,14 @@ class HomeSeeder extends Seeder
     public function run(): void
     {
         DB::table('homes')->insert([
-            'title1' => 'Welcome to My Website',
-            'title2' => 'Explore My Work',
-            'title3' => 'Get In Touch',
-            'button_left' => 'Learn More',
-            'button_right' => 'Contact Me',
-            'about_me_title' => 'About Me',
-            'about_me_description' => 'Hi everyone, I am Aryanda Pradipta, a web developer who enjoys writing articles about programming. I also love sharing knowledge with others. If you want to discuss programming, feel free to contact me.',
-            'image_path' => 'images/about_me.jpg',
+            'main_title' => 'CODING DEVELOPMENT &bull; MARKETING',
+            'subtitle1' => 'Hello everyone 🙌',
+            'subtitle2' => 'Let me introduce myself, my name is Aryanda Pradipta',
+            'left_button_text' => 'Resume',
+            'right_button_text' => 'Contacts',
+            'about_me_section_title' => 'My name is Aryanda Pradipta',
+            'about_me_section_description' => 'Hi everyone, I am a web developer who enjoys writing articles about programming. I also love sharing knowledge with others. If you want to discuss programming, feel free to contact me.',
+            'image_path' => 'uploads/IMG_2305.JPG',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

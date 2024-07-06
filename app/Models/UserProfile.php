@@ -12,11 +12,8 @@ class UserProfile extends Model
     protected $fillable = [
         'name',
         'about',
-        'link_twitter',
-        'link_linkedin',
-        'link_github',
-        'telepon',
+        'phone',
         'email',
-        'link_footer',
+        'user_id',
     ];
 }

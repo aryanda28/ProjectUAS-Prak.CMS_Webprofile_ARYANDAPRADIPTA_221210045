@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('resumes', function (Blueprint $table) {
             $table->id();
-            $table->string('tahun');
-            $table->string('nama_sekolah');
-            $table->string('jenis_sekolah');
-            $table->text('penjelasan');
-            $table->timestamps();
+            $table->string('year')->comment('Year of establishment or reference');
+            $table->string('school_name')->comment('Name of the school');
+            $table->string('school_type')->comment('Type of school');
+            $table->text('description')->comment('Explanation or description');
+            $table->timestamps();            
         });
     }
 
